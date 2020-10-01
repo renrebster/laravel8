@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Task;
+use App\Http\Requests\TaskStoreRequest;
+
 class TasksController extends Controller
 {
 
@@ -23,7 +26,8 @@ class TasksController extends Controller
      */
     public function index()
     {
-        return view('task.index')->with('tasks',$this->tasks);
+        $tasks = Task::all();
+        return view('task.index')->with('tasks', $tasks);
 
     }
 
@@ -34,7 +38,7 @@ class TasksController extends Controller
      */
     public function create()
     {
-        //
+        return view('task.create');
     }
 
     /**
@@ -43,9 +47,12 @@ class TasksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TaskStoreRequest $request)
     {
-        //
+
+        $task = Task::create($request->all());
+        return view('task.show')->with('task',$task);
+
     }
 
     /**
@@ -56,7 +63,8 @@ class TasksController extends Controller
      */
     public function show($task)
     {
-        return view('task.show')->with('task', $this->tasks[$task]);
+        $task = Task::find($task);
+        return view('task.show')->with('task', $task);
     }
 
     /**
@@ -88,8 +96,10 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( $task )
     {
-        //
+        $task = Task::find($task);
+        $task->delete();
+        return redirect(route('tasks.index'));
     }
 }

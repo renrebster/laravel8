@@ -9,8 +9,8 @@ class Project extends Model
 {
     use HasFactory;
 
-    public function tasks()
-    {
-        return $this->hasMany('App\Models\Task');
-    }
+    // public function tasks()
+    // {
+    //     return $this->hasMany('App\Models\Task');
+    // }
 }
