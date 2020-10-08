@@ -91,6 +91,17 @@ return [
             'prefix_indexes' => true,
         ],
 
+         'heroku' => [
+            'driver'   => 'pgsql',
+            'host'     => !is_null(getenv("DATABASE_URL")) ?: parse_url(getenv("DATABASE_URL"))["host"],
+            'database' => substr(parse_url(getenv("DATABASE_URL"))["path"], 1),
+            'username' => !is_null(getenv("DATABASE_URL")) ?: parse_url(getenv("DATABASE_URL"))["user"],
+            'password' => !is_null(getenv("DATABASE_URL")) ?: parse_url(getenv("DATABASE_URL"))["pass"],
+            'charset'  => 'utf8',
+            'prefix'   => '',
+            'schema'   => 'public',
+        ],
+
     ],
 
     /*
