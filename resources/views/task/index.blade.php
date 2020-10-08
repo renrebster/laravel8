@@ -3,7 +3,7 @@
 
 
 @section('content')
-Task list
+Todo MVC
 
 <a href="{{ route('tasks.create') }}"> New task</a>
 
