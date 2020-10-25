@@ -1,7 +1,14 @@
 
-Detail Task
+@extends('layout')
 
-<div>{{$task['id']}} - {{$task['name']}}</div>
+@section('content')
 
-<a href="{{ route('tasks.index') }}">Return</a>
+<h1>Detail of task #{{ $task->id }}</h1>
+
+<p><b>Name : </b>{{ $task->name }}</h1>
+
+<p><a href="{{ route('tasks.index') }}">Back to list</a></p>
+
+@endsection
+
 

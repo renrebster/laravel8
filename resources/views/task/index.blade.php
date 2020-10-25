@@ -3,22 +3,36 @@
 
 
 @section('content')
-Todo MVC
 
-<a href="{{ route('tasks.create') }}"> New task</a>
+<h1>Todo MVC</h1>
 
-<ul>
-@foreach ($tasks as $task)
-    <li><a href="{{ route('tasks.show', ['task' => $task['id']]) }}">{{$task['id']}} - {{$task['name']}}</a></li>
-    <form action="{{ route('tasks.destroy', ['task'=> $task->id]) }}" method="POST">
-        @csrf
-        @method('DELETE')
+<a href="{{ route('tasks.create') }}" class="btn"> New task</a>
 
-        <input type="submit" value="Delete">
-    </form>
+<table class="striped highlight">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($tasks as $task)
+        <tr>
+            <td>{{ $task->id }}</td>
+            <td>{{ $task->name }}</td>
+            <td>
+                <a href="{{ route('tasks.show', ['task' => $task->id]) }}" class="btn left">Show</a>
+                <form method="POST" action="{{ route('tasks.destroy', ['task' => $task->id]) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn waves-effect waves-light red left" type="submit" name="action">Delete</button>
+                </form>
+            </td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>
 
 
-
-@endforeach
-</ul>
 @endsection
