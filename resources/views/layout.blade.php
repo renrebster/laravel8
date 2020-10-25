@@ -10,7 +10,6 @@
     </head>
     <body>
 
-        <h3>Test</h3>
         <div class="menu">
             @yield('menu')
         </div>
