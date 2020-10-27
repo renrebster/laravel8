@@ -10,14 +10,14 @@ use App\Http\Requests\TaskStoreRequest;
 class TasksController extends Controller
 {
 
-    private $tasks;
-    public function __construct() {
+    // private $tasks;
+    // public function __construct() {
 
-        $this->tasks = collect([
-            ['id' => 2, 'name' => 'Learn Laravel', 'duration' => 12],
-            ['id' => 3, 'name' => 'Learn RubyOnRails', 'duration' => 24]
-        ])->keyBy('id');
-    }
+    //     $this->tasks = collect([
+    //         ['id' => 2, 'name' => 'Learn Laravel', 'duration' => 12],
+    //         ['id' => 3, 'name' => 'Learn RubyOnRails', 'duration' => 24]
+    //     ])->keyBy('id');
+    // }
 
     /**
      * Display a listing of the resource.
